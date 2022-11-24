@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import ListQuotes from "./pages/list_quotes/ListQuotes";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NewQuote from "./pages/new_quote/NewQuote";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <ChakraProvider>
+        <Routes>
+          <Route path="/" element={<Navigate replace to="/quotes" />} />
+          <Route path="/quotes" element={<ListQuotes />}></Route>
+          <Route path="/new-quote" element={<NewQuote />}></Route>
+        </Routes>
+      </ChakraProvider>
+    </Layout>
   );
 }
 
